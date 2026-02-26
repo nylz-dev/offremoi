@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OffreMoi 🎁 — Ta wishlist anonyme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FFF5F0;
+      --bg2: #FFF0F5;
+      --coral: #FF6B6B;
+      --indigo: #6366f1;
+      --indigo-dark: #4f46e5;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #f0e8e8;
+      --shadow: 0 4px 24px rgba(255,107,107,0.10);
+      --shadow-hover: 0 8px 32px rgba(255,107,107,0.18);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+      min-height: 100vh;
+      color: var(--text);
+    }
+
+    /* ───── NAVBAR ───── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo span { color: var(--coral); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .6rem 1.4rem;
+      border-radius: 12px;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--indigo);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
+    .btn-coral {
+      background: var(--coral);
+      color: #fff;
+    }
+    .btn-coral:hover { background: #ff5252; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,107,107,.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--indigo);
+      border: 2px solid var(--indigo);
+    }
+    .btn-outline:hover { background: var(--indigo); color: #fff; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.7);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: #fff; }
+    .btn-sm { padding: .4rem 1rem; font-size: .85rem; }
+
+    /* ───── VIEWS ───── */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ───── LANDING ───── */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(99,102,241,.12);
+      color: var(--indigo);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #1a1a2e 40%, var(--coral) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* Feature cards */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .feature-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .feature-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+    .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.55; }
+
+    /* CTA strip */
+    .cta-strip {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, var(--indigo) 0%, #8b5cf6 100%);
+      margin: 0 0 0;
+    }
+    .cta-strip h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: .8rem; }
+    .cta-strip p { color: rgba(255,255,255,.75); margin-bottom: 2rem; font-size: 1rem; }
+    .cta-strip .btn-coral { font-size: 1.05rem; padding: .85rem 2rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    /* ───── PROFILE PAGE ───── */
+    .profile-header {
+      text-align: center;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .profile-avatar {
+      font-size: 4rem;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #fff5f0, #fff0f5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 20px rgba(255,107,107,.15);
+      border: 3px solid rgba(255,107,107,.2);
+    }
+    .profile-header h1 { font-size: 1.8rem; font-weight: 800; }
+    .profile-header p { color: var(--muted); margin-top: .5rem; max-width: 420px; margin-inline: auto; }
+
+    .profile-actions {
+      display: flex;
+      gap: .8rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .item-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+    .item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .item-card-icon { font-size: 2.5rem; text-align: center; }
+    .item-card h3 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .item-price {
+      display: inline-block;
+      background: linear-gradient(135deg, #fff5f0, #fff0f5);
+      color: var(--coral);
+      font-weight: 700;
+      font-size: .9rem;
+      padding: .25rem .75rem;
+      border-radius: 8px;
+      align-self: flex-start;
+    }
+    .item-card .btn-coral { margin-top: auto; width: 100%; justify-content: center; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+    }
+    .empty-state .big-emoji { font-size: 4rem; margin-bottom: 1rem; }
+
+    /* ───── CREATE FORM ───── */
+    .create-section {
+      max-width: 680px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .create-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: .4rem; }
+    .create-section .subtitle { color: var(--muted); margin-bottom: 2rem; }
+
+    .form-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: .4rem;
+      color: var(--text);
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: .95rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: border-color .2s;
+      outline: none;
+      color: var(--text);
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--indigo);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group .hint { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+
+    /* Emoji picker */
+    .emoji-picker {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .emoji-option {
+      font-size: 1.6rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: #fafafa;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+    }
+    .emoji-option:hover { border-color: var(--indigo); background: #f0f0ff; }
+    .emoji-option.selected { border-color: var(--indigo); background: rgba(99,102,241,.1); box-shadow: 0 0 0 3px rgba(99,102,241,.2); }
+
+    /* Items builder */
+    .items-list { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1rem; }
+    .item-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto auto;
+      gap: .6rem;
+      align-items: center;
+      background: #fafafa;
+      border-radius: 12px;
+      padding: .8rem;
+      border: 1px solid var(--border);
+    }
+    .item-row input { background: #fff; }
+    .remove-item {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: none;
+      background: #fee2e2;
+      color: #ef4444;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+    }
+    .remove-item:hover { background: #fecaca; }
+
+    .add-item-btn {
+      width: 100%;
+      padding: .7rem;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+    .add-item-btn:hover { border-color: var(--indigo); color: var(--indigo); background: rgba(99,102,241,.04); }
+
+    .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; font-size: 1rem; justify-content: center; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #1a1a2e;
+      color: #fff;
+      padding: .9rem 1.4rem;
+      border-radius: 14px;
+      font-size: .9rem;
+      font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all .3s;
+      z-index: 999;
+      max-width: 320px;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { background: #16a34a; }
+    .toast.error { background: #dc2626; }
+
+    /* Loading */
+    .loader {
+      text-align: center;
+      padding: 4rem;
+      color: var(--muted);
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--coral);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 600px) {
+      nav { padding: .8rem 1rem; }
+      .item-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .item-row .remove-item { grid-column: 2; grid-row: 2; justify-self: end; }
+      .hero { padding: 3rem 1rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───── NAVBAR ───── -->
+<nav>
+  <a class="nav-logo" onclick="showLanding()">🎁 Offre<span>Moi</span></a>
+  <button class="btn btn-primary" onclick="showCreate()">✨ Créer ma liste</button>
+</nav>
+
+<!-- ───── LANDING VIEW ───── -->
+<div id="view-landing" class="view active">
+  <section class="hero">
+    <div class="hero-badge">🇫🇷 Pour les créateurs français</div>
+    <h1>Ta liste de cadeaux.<br/>Zéro adresse exposée.</h1>
+    <p>Tes fans t'offrent ce que tu veux sur Amazon. Ils ne voient jamais ton adresse.</p>
+    <div class="hero-cta">
+      <button class="btn btn-coral" style="font-size:1.05rem;padding:.85rem 2rem;" onclick="showCreate()">🎁 Créer ma liste gratuite</button>
+      <button class="btn btn-ghost" onclick="showProfile('nylz')">👀 Voir un exemple</button>
+    </div>
+  </section>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Adresse 100% privée</h3>
+      <p>Tes fans voient les cadeaux, jamais ton domicile. Amazon expédie directement, sans révéler ton adresse.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎁</div>
+      <h3>Liste Amazon en 2 min</h3>
+      <p>Colle des liens Amazon, on fait le reste. Tes fans voient une belle page et peuvent t'offrir ce que tu veux.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3>Tu gagnes des commissions</h3>
+      <p>Chaque achat via ta liste te rapporte des commissions Amazon. Tu crées, tes fans offrent, tu gagnes.</p>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <h2>Prêt à recevoir des cadeaux ? 🎉</h2>
+    <p>Rejoins les créateurs qui utilisent déjà OffreMoi</p>
+    <button class="btn btn-coral" onclick="showCreate()">Créer ta liste gratuitement →</button>
+  </div>
+
+  <footer>OffreMoi 2026 • Inspiré de <a href="https://throne.com" target="_blank" style="color:var(--coral);text-decoration:none;">Throne.com</a> • Fait pour les créateurs FR 🇫🇷</footer>
+</div>
+
+<!-- ───── PROFILE VIEW ───── -->
+<div id="view-profile" class="view">
+  <div id="profile-content">
+    <div class="loader">
+      <div class="spinner"></div>
+      <p>Chargement de la wishlist…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ───── CREATE VIEW ───── -->
+<div id="view-create" class="view">
+  <div class="create-section">
+    <h2>Créer ta liste 🎁</h2>
+    <p class="subtitle">2 minutes et ta wishlist est en ligne. C'est gratuit.</p>
+
+    <div class="form-card">
+      <form id="create-form" onsubmit="handleCreateForm(event)">
+
+        <div class="form-group">
+          <label>Ton avatar</label>
+          <div class="emoji-picker" id="emoji-picker">
+            <button type="button" class="emoji-option selected" data-emoji="🎮">🎮</button>
+            <button type="button" class="emoji-option" data-emoji="🎵">🎵</button>
+            <button type="button" class="emoji-option" data-emoji="🎨">🎨</button>
+            <button type="button" class="emoji-option" data-emoji="📹">📹</button>
+            <button type="button" class="emoji-option" data-emoji="💻">💻</button>
+            <button type="button" class="emoji-option" data-emoji="✍️">✍️</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-username">Username <span style="color:var(--coral)">*</span></label>
+          <input type="text" id="f-username" placeholder="nylz" pattern="[a-zA-Z0-9_-]+" required />
+          <div class="hint">Sera l'URL de ta page : offremoi.fr/<strong id="username-preview">nylz</strong></div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-displayname">Nom affiché <span style="color:var(--coral)">*</span></label>
+          <input type="text" id="f-displayname" placeholder="Nylz" required />
+        </div>
+
+        <div class="form-group">
+          <label for="f-bio">Bio <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(140 max)</span></label>
+          <textarea id="f-bio" maxlength="140" placeholder="Builder, créateur de contenu, passionné d'IA 🚀"></textarea>
+          <div class="hint"><span id="bio-count">0</span>/140 caractères</div>
+        </div>
+
+        <div class="form-group">
+          <label>Tes cadeaux 🎁</label>
+          <div class="items-list" id="items-list"></div>
+          <button type="button" class="add-item-btn" onclick="addItemRow()">+ Ajouter un cadeau</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">🚀 Créer ma liste</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ─── State ───
+  let currentView = 'landing';
+  let selectedEmoji = '🎮';
+  let itemCount = 0;
+
+  // ─── Router ───
+  function showLanding() {
+    setView('landing');
+    history.pushState({}, '', '/');
+  }
+
+  function showProfile(username) {
+    setView('profile');
+    history.pushState({}, '', '/' + username);
+    loadProfile(username);
+  }
+
+  function showCreate() {
+    setView('create');
+    history.pushState({}, '', '/create');
+  }
+
+  function setView(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    currentView = name;
+    window.scrollTo(0, 0);
+  }
+
+  // ─── Load profile ───
+  async function loadProfile(username) {
+    const container = document.getElementById('profile-content');
+    container.innerHTML = `<div class="loader"><div class="spinner"></div><p>Chargement…</p></div>`;
+
+    try {
+      const res = await fetch('/api/wishlists/' + username);
+      if (!res.ok) throw new Error('not found');
+      const data = await res.json();
+      renderProfile(data);
+    } catch (e) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="big-emoji">😢</div>
+          <h2>Wishlist introuvable</h2>
+          <p style="margin:.5rem 0 1.5rem;">Le créateur <strong>@${username}</strong> n'a pas encore de liste OffreMoi.</p>
+          <button class="btn btn-primary" onclick="showCreate()">Créer la mienne</button>
+        </div>`;
+    }
+  }
+
+  function renderProfile(data) {
+    const container = document.getElementById('profile-content');
+    const profileUrl = window.location.href;
+
+    const itemsHtml = data.items.length === 0
+      ? `<div class="empty-state"><div class="big-emoji">🎁</div><p>Aucun cadeau pour l'instant…</p></div>`
+      : `<div class="wishlist-grid">${data.items.map(item => `
+          <div class="item-card">
+            <div class="item-card-icon">🎁</div>
+            <h3>${escHtml(item.name)}</h3>
+            ${item.price ? `<span class="item-price">${escHtml(item.price)}</span>` : ''}
+            <a href="${escHtml(item.affiliateUrl || item.url)}" target="_blank" rel="noopener" class="btn btn-coral">🎁 Offrir ce cadeau</a>
+          </div>`).join('')}
+        </div>`;
+
+    container.innerHTML = `
+      <div class="profile-header">
+        <div class="profile-avatar">${data.emoji || '🎁'}</div>
+        <h1>${escHtml(data.displayName)}</h1>
+        <p>${escHtml(data.bio || '')}</p>
+        <div class="profile-actions">
+          <button class="btn btn-coral" onclick="toggleFollow(this, '${data.username}')">❤️ Suivre ${escHtml(data.displayName)}</button>
+          <button class="btn btn-ghost" onclick="copyLink('${profileUrl}')">🔗 Copier le lien</button>
+          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('Offrez un cadeau à ' + data.displayName + ' ! 🎁 ' + profileUrl)}" target="_blank" rel="noopener" class="btn btn-ghost">𝕏 Partager</a>
+        </div>
+      </div>
+      ${itemsHtml}
+      <div style="text-align:center;padding:2rem 0 3rem;">
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.8rem;">Tu veux ta propre liste ?</p>
+        <button class="btn btn-primary" onclick="showCreate()">✨ Créer ma liste gratuite</button>
+      </div>`;
+  }
+
+  function toggleFollow(btn, username) {
+    const key = 'follow_' + username;
+    const following = localStorage.getItem(key);
+    if (following) {
+      localStorage.removeItem(key);
+      btn.textContent = '❤️ Suivre';
+      showToast('Tu ne suis plus ce créateur', 'error');
+    } else {
+      localStorage.setItem(key, '1');
+      btn.textContent = '💜 Abonné·e !';
+      showToast('Tu suis maintenant ce créateur ! 💜');
+    }
+  }
+
+  function copyLink(url) {
+    navigator.clipboard.writeText(url).then(() => showToast('Lien copié ! 🔗', 'success'));
+  }
+
+  // ─── Create form ───
+  function addItemRow() {
+    const id = ++itemCount;
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.id = 'item-' + id;
+    row.innerHTML = `
+      <input type="text" placeholder="Nom du produit" id="item-name-${id}" />
+      <input type="url" placeholder="https://amazon.fr/dp/..." id="item-url-${id}" />
+      <input type="text" placeholder="Prix (ex: 89€)" style="grid-column:1;grid-row:2;" id="item-price-${id}" />
+      <button type="button" class="remove-item" onclick="removeItem(${id})" title="Supprimer" style="grid-column:2;grid-row:2;">✕</button>`;
+    document.getElementById('items-list').appendChild(row);
+  }
+
+  function removeItem(id) {
+    document.getElementById('item-' + id)?.remove();
+  }
+
+  async function handleCreateForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type=submit]');
+    btn.disabled = true;
+    btn.textContent = '⏳ Création en cours…';
+
+    const username = document.getElementById('f-username').value.trim();
+    const displayName = document.getElementById('f-displayname').value.trim();
+    const bio = document.getElementById('f-bio').value.trim();
+
+    // Collect items
+    const items = [];
+    document.querySelectorAll('.item-row').forEach(row => {
+      const id = row.id.replace('item-', '');
+      const name = document.getElementById('item-name-' + id)?.value.trim();
+      const url = document.getElementById('item-url-' + id)?.value.trim();
+      const price = document.getElementById('item-price-' + id)?.value.trim();
+      if (name || url) items.push({ name, url, price });
+    });
+
+    try {
+      const res = await fetch('/api/wishlists', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, displayName, bio, emoji: selectedEmoji, items })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur');
+
+      showToast('🎉 Liste créée avec succès !', 'success');
+      setTimeout(() => showProfile(data.username), 1000);
+    } catch (err) {
+      showToast('❌ ' + err.message, 'error');
+      btn.disabled = false;
+      btn.textContent = '🚀 Créer ma liste';
+    }
+  }
+
+  // ─── Emoji picker ───
+  document.querySelectorAll('.emoji-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.emoji-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedEmoji = btn.dataset.emoji;
+    });
+  });
+
+  // ─── Username preview ───
+  document.getElementById('f-username')?.addEventListener('input', function() {
+    document.getElementById('username-preview').textContent = this.value || 'ton-username';
+  });
+
+  // ─── Bio counter ───
+  document.getElementById('f-bio')?.addEventListener('input', function() {
+    document.getElementById('bio-count').textContent = this.value.length;
+  });
+
+  // ─── Toast ───
+  function showToast(msg, type = '') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (type ? ' ' + type : '');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ─── HTML escape ───
+  function escHtml(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ─── Client-side routing (handle direct URL visits) ───
+  (function init() {
+    const path = window.location.pathname.replace(/^\//, '');
+    if (!path || path === 'index.html') {
+      showLanding();
+    } else if (path === 'create') {
+      showCreate();
+    } else {
+      showProfile(path);
+    }
+
+    // Pre-add one empty item row in create form
+    addItemRow();
+  })();
+
+  window.addEventListener('popstate', () => {
+    const path = window.location.pathname.replace(/^\//, '');
+    if (!path) showLanding();
+    else if (path === 'create') showCreate();
+    else showProfile(path);
+  });
+</script>
+</body>
+</html>
