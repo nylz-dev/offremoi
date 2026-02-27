@@ -5,10 +5,36 @@
     "bio": "Builder, créateur de contenu, passionné d'IA 🚀",
     "emoji": "💻",
     "items": [
-      {"id": "1", "name": "Clavier mécanique Keychron K2", "url": "https://www.amazon.fr/dp/B08FQH94YB", "price": "89€", "addedAt": "2026-02-26"},
-      {"id": "2", "name": "Souris Logitech MX Master 3", "url": "https://www.amazon.fr/dp/B07S395RWD", "price": "99€", "addedAt": "2026-02-26"},
-      {"id": "3", "name": "Livre: Zero to One (Peter Thiel)", "url": "https://www.amazon.fr/dp/0804139296", "price": "15€", "addedAt": "2026-02-26"}
+      {
+        "id": "1",
+        "name": "Clavier mécanique Keychron K2",
+        "url": "https://www.amazon.fr/dp/B08FQH94YB",
+        "price": "89€",
+        "addedAt": "2026-02-26"
+      },
+      {
+        "id": "2",
+        "name": "Souris Logitech MX Master 3",
+        "url": "https://www.amazon.fr/dp/B07S395RWD",
+        "price": "99€",
+        "addedAt": "2026-02-26"
+      },
+      {
+        "id": "3",
+        "name": "Livre: Zero to One (Peter Thiel)",
+        "url": "https://www.amazon.fr/dp/0804139296",
+        "price": "15€",
+        "addedAt": "2026-02-26"
+      }
     ],
     "createdAt": "2026-02-26"
+  },
+  "testuser": {
+    "username": "testuser",
+    "displayName": "Test",
+    "bio": "",
+    "emoji": "🎁",
+    "items": [],
+    "createdAt": "2026-02-27"
   }
 }

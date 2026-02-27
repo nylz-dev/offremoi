@@ -43,50 +43,25 @@
       top: 0;
       z-index: 100;
     }
-    .nav-logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-      cursor: pointer;
-    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--text); text-decoration: none; cursor: pointer; }
     .nav-logo span { color: var(--coral); }
+    .nav-actions { display: flex; gap: .6rem; align-items: center; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .6rem 1.4rem;
-      border-radius: 12px;
-      font-size: .95rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: all .2s;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .6rem 1.4rem; border-radius: 12px; font-size: .95rem;
+      font-weight: 600; cursor: pointer; border: none; transition: all .2s; text-decoration: none;
     }
-    .btn-primary {
-      background: var(--indigo);
-      color: #fff;
-    }
+    .btn-primary { background: var(--indigo); color: #fff; }
     .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
-    .btn-coral {
-      background: var(--coral);
-      color: #fff;
-    }
+    .btn-coral { background: var(--coral); color: #fff; }
     .btn-coral:hover { background: #ff5252; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,107,107,.35); }
-    .btn-outline {
-      background: transparent;
-      color: var(--indigo);
-      border: 2px solid var(--indigo);
-    }
+    .btn-outline { background: transparent; color: var(--indigo); border: 2px solid var(--indigo); }
     .btn-outline:hover { background: var(--indigo); color: #fff; }
-    .btn-ghost {
-      background: rgba(255,255,255,0.7);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
+    .btn-ghost { background: rgba(255,255,255,0.7); color: var(--text); border: 1px solid var(--border); }
     .btn-ghost:hover { background: #fff; }
+    .btn-danger { background: #fee2e2; color: #dc2626; border: none; }
+    .btn-danger:hover { background: #fecaca; }
     .btn-sm { padding: .4rem 1rem; font-size: .85rem; }
 
     /* ───── VIEWS ───── */
@@ -94,300 +69,232 @@
     .view.active { display: block; }
 
     /* ───── LANDING ───── */
-    .hero {
-      text-align: center;
-      padding: 5rem 1.5rem 3rem;
-      max-width: 760px;
-      margin: 0 auto;
-    }
+    .hero { text-align: center; padding: 5rem 1.5rem 3rem; max-width: 760px; margin: 0 auto; }
     .hero-badge {
-      display: inline-block;
-      background: rgba(99,102,241,.12);
-      color: var(--indigo);
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: .35rem .9rem;
-      border-radius: 999px;
-      margin-bottom: 1.5rem;
+      display: inline-block; background: rgba(99,102,241,.12); color: var(--indigo);
+      font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.5rem;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
+      font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.2rem;
       background: linear-gradient(135deg, #1a1a2e 40%, var(--coral) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.65;
-    }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.65; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    /* Feature cards */
     .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
-      max-width: 900px;
-      margin: 2rem auto 4rem;
-      padding: 0 1.5rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem; max-width: 900px; margin: 2rem auto 4rem; padding: 0 1.5rem;
     }
     .feature-card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      box-shadow: var(--shadow);
-      transition: transform .2s, box-shadow .2s;
+      background: var(--card); border-radius: 20px; padding: 2rem 1.5rem;
+      box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
     }
     .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .feature-icon { font-size: 2rem; margin-bottom: .8rem; }
     .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
     .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.55; }
 
-    /* CTA strip */
     .cta-strip {
-      text-align: center;
-      padding: 4rem 1.5rem;
+      text-align: center; padding: 4rem 1.5rem;
       background: linear-gradient(135deg, var(--indigo) 0%, #8b5cf6 100%);
-      margin: 0 0 0;
     }
     .cta-strip h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: .8rem; }
     .cta-strip p { color: rgba(255,255,255,.75); margin-bottom: 2rem; font-size: 1rem; }
     .cta-strip .btn-coral { font-size: 1.05rem; padding: .85rem 2rem; }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--muted);
-      font-size: .85rem;
-    }
+    footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: .85rem; }
 
     /* ───── PROFILE PAGE ───── */
-    .profile-header {
-      text-align: center;
-      padding: 3rem 1.5rem 1.5rem;
-    }
+    .profile-header { text-align: center; padding: 3rem 1.5rem 1.5rem; }
     .profile-avatar {
-      font-size: 4rem;
-      width: 100px;
-      height: 100px;
+      font-size: 4rem; width: 100px; height: 100px;
       background: linear-gradient(135deg, #fff5f0, #fff0f5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      box-shadow: 0 4px 20px rgba(255,107,107,.15);
-      border: 3px solid rgba(255,107,107,.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; box-shadow: 0 4px 20px rgba(255,107,107,.15); border: 3px solid rgba(255,107,107,.2);
     }
     .profile-header h1 { font-size: 1.8rem; font-weight: 800; }
     .profile-header p { color: var(--muted); margin-top: .5rem; max-width: 420px; margin-inline: auto; }
-
-    .profile-actions {
-      display: flex;
-      gap: .8rem;
-      justify-content: center;
-      margin-top: 1.2rem;
-      flex-wrap: wrap;
-    }
+    .profile-actions { display: flex; gap: .8rem; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap; }
 
     .wishlist-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem; max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem;
     }
-
     .item-card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 1.6rem;
-      box-shadow: var(--shadow);
-      transition: transform .2s, box-shadow .2s;
-      display: flex;
-      flex-direction: column;
-      gap: .8rem;
+      background: var(--card); border-radius: 20px; padding: 1.6rem;
+      box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column; gap: .8rem;
     }
     .item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .item-card-icon { font-size: 2.5rem; text-align: center; }
     .item-card h3 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
     .item-price {
-      display: inline-block;
-      background: linear-gradient(135deg, #fff5f0, #fff0f5);
-      color: var(--coral);
-      font-weight: 700;
-      font-size: .9rem;
-      padding: .25rem .75rem;
-      border-radius: 8px;
-      align-self: flex-start;
+      display: inline-block; background: linear-gradient(135deg, #fff5f0, #fff0f5);
+      color: var(--coral); font-weight: 700; font-size: .9rem;
+      padding: .25rem .75rem; border-radius: 8px; align-self: flex-start;
     }
     .item-card .btn-coral { margin-top: auto; width: 100%; justify-content: center; }
 
-    /* Empty state */
-    .empty-state {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: var(--muted);
-    }
+    .empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
     .empty-state .big-emoji { font-size: 4rem; margin-bottom: 1rem; }
 
     /* ───── CREATE FORM ───── */
-    .create-section {
-      max-width: 680px;
-      margin: 2rem auto;
-      padding: 0 1.5rem 4rem;
-    }
+    .create-section { max-width: 680px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
     .create-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: .4rem; }
     .create-section .subtitle { color: var(--muted); margin-bottom: 2rem; }
 
-    .form-card {
-      background: var(--card);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-    }
+    .form-card { background: var(--card); border-radius: 24px; padding: 2rem; box-shadow: var(--shadow); }
 
     .form-group { margin-bottom: 1.2rem; }
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      font-size: .9rem;
-      margin-bottom: .4rem;
-      color: var(--text);
-    }
+    .form-group label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .4rem; color: var(--text); }
     .form-group input, .form-group textarea {
-      width: 100%;
-      padding: .75rem 1rem;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-size: .95rem;
-      font-family: inherit;
-      background: #fafafa;
-      transition: border-color .2s;
-      outline: none;
-      color: var(--text);
+      width: 100%; padding: .75rem 1rem; border: 2px solid var(--border);
+      border-radius: 12px; font-size: .95rem; font-family: inherit;
+      background: #fafafa; transition: border-color .2s; outline: none; color: var(--text);
     }
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: var(--indigo);
-      background: #fff;
-    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--indigo); background: #fff; }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-group .hint { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-    /* Emoji picker */
-    .emoji-picker {
-      display: flex;
-      gap: .6rem;
-      flex-wrap: wrap;
+    .form-divider {
+      border: none; border-top: 2px solid var(--border);
+      margin: 1.5rem 0; position: relative;
     }
+    .form-divider::after {
+      content: attr(data-label);
+      position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+      background: var(--card); padding: 0 .8rem;
+      font-size: .8rem; color: var(--muted); font-weight: 600;
+    }
+
+    .emoji-picker { display: flex; gap: .6rem; flex-wrap: wrap; }
     .emoji-option {
-      font-size: 1.6rem;
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      border: 2px solid var(--border);
-      background: #fafafa;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .15s;
+      font-size: 1.6rem; width: 52px; height: 52px; border-radius: 12px;
+      border: 2px solid var(--border); background: #fafafa; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .15s;
     }
     .emoji-option:hover { border-color: var(--indigo); background: #f0f0ff; }
     .emoji-option.selected { border-color: var(--indigo); background: rgba(99,102,241,.1); box-shadow: 0 0 0 3px rgba(99,102,241,.2); }
 
-    /* Items builder */
     .items-list { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1rem; }
     .item-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto auto;
-      gap: .6rem;
-      align-items: center;
-      background: #fafafa;
-      border-radius: 12px;
-      padding: .8rem;
-      border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr auto auto;
+      gap: .6rem; align-items: center; background: #fafafa;
+      border-radius: 12px; padding: .8rem; border: 1px solid var(--border);
     }
     .item-row input { background: #fff; }
     .remove-item {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      border: none;
-      background: #fee2e2;
-      color: #ef4444;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .15s;
+      width: 32px; height: 32px; border-radius: 8px; border: none;
+      background: #fee2e2; color: #ef4444; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center; transition: background .15s;
     }
     .remove-item:hover { background: #fecaca; }
 
     .add-item-btn {
-      width: 100%;
-      padding: .7rem;
-      border: 2px dashed var(--border);
-      border-radius: 12px;
-      background: transparent;
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .2s;
-      font-family: inherit;
+      width: 100%; padding: .7rem; border: 2px dashed var(--border);
+      border-radius: 12px; background: transparent; color: var(--muted);
+      font-size: .9rem; font-weight: 600; cursor: pointer; transition: all .2s; font-family: inherit;
     }
     .add-item-btn:hover { border-color: var(--indigo); color: var(--indigo); background: rgba(99,102,241,.04); }
 
     .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; font-size: 1rem; justify-content: center; }
 
+    /* ───── DASHBOARD ───── */
+    .dashboard-section { max-width: 760px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+    .dashboard-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .dashboard-header h2 { font-size: 1.6rem; font-weight: 800; }
+    .dashboard-card { background: var(--card); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 1.2rem; }
+    .dashboard-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: .8rem; }
+    .dashboard-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .8rem; border-radius: 12px; background: #fafafa;
+      border: 1px solid var(--border); margin-bottom: .6rem;
+    }
+    .dashboard-item:last-child { margin-bottom: 0; }
+    .dashboard-item-info { flex: 1; min-width: 0; }
+    .dashboard-item-name { font-weight: 600; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dashboard-item-price { font-size: .8rem; color: var(--coral); margin-top: .2rem; }
+    .dashboard-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem; margin-bottom: 1.2rem;
+    }
+    .stat-card {
+      background: var(--card); border-radius: 16px; padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .stat-number { font-size: 2rem; font-weight: 900; color: var(--coral); }
+    .stat-label { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+
+    /* Profile link banner */
+    .link-banner {
+      background: linear-gradient(135deg, var(--indigo), #8b5cf6);
+      border-radius: 16px; padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.2rem; flex-wrap: wrap; gap: .8rem;
+    }
+    .link-banner p { color: rgba(255,255,255,.8); font-size: .85rem; margin-bottom: .2rem; }
+    .link-banner strong { color: #fff; font-size: 1rem; word-break: break-all; }
+
+    /* Add item form inline */
+    .add-item-form {
+      background: #fafafa; border-radius: 12px; padding: 1rem;
+      border: 2px dashed var(--border); margin-top: .8rem; display: none;
+    }
+    .add-item-form.open { display: block; }
+    .add-item-form-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; margin-bottom: .6rem; }
+    .add-item-form input { padding: .6rem .9rem; border: 2px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; background: #fff; outline: none; transition: border-color .2s; }
+    .add-item-form input:focus { border-color: var(--indigo); }
+
+    /* ───── LOGIN MODAL ───── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      z-index: 500; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card); border-radius: 24px; padding: 2.5rem;
+      max-width: 440px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      position: relative;
+    }
+    .modal h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: .5rem; }
+    .modal p { color: var(--muted); margin-bottom: 1.5rem; font-size: .9rem; }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--muted);
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-tabs { display: flex; gap: .4rem; margin-bottom: 1.5rem; background: #f5f5f5; border-radius: 12px; padding: .3rem; }
+    .modal-tab {
+      flex: 1; padding: .6rem; text-align: center; border-radius: 9px; font-size: .9rem;
+      font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all .2s;
+    }
+    .modal-tab.active { background: #fff; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+
     /* Toast */
     .toast {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      background: #1a1a2e;
-      color: #fff;
-      padding: .9rem 1.4rem;
-      border-radius: 14px;
-      font-size: .9rem;
-      font-weight: 600;
-      box-shadow: 0 8px 32px rgba(0,0,0,.2);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: all .3s;
-      z-index: 999;
-      max-width: 320px;
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: #1a1a2e; color: #fff; padding: .9rem 1.4rem;
+      border-radius: 14px; font-size: .9rem; font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2); opacity: 0; transform: translateY(12px);
+      transition: all .3s; z-index: 999; max-width: 320px;
     }
     .toast.show { opacity: 1; transform: translateY(0); }
     .toast.success { background: #16a34a; }
     .toast.error { background: #dc2626; }
 
     /* Loading */
-    .loader {
-      text-align: center;
-      padding: 4rem;
-      color: var(--muted);
-    }
+    .loader { text-align: center; padding: 4rem; color: var(--muted); }
     .spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--coral);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
+      width: 40px; height: 40px; border: 3px solid var(--border);
+      border-top-color: var(--coral); border-radius: 50%;
+      animation: spin 1s linear infinite; margin: 0 auto 1rem;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -397,6 +304,9 @@
       .item-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
       .item-row .remove-item { grid-column: 2; grid-row: 2; justify-self: end; }
       .hero { padding: 3rem 1rem 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .modal { padding: 1.5rem; }
+      .add-item-form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -405,7 +315,10 @@
 <!-- ───── NAVBAR ───── -->
 <nav>
   <a class="nav-logo" onclick="showLanding()">🎁 Offre<span>Moi</span></a>
-  <button class="btn btn-primary" onclick="showCreate()">✨ Créer ma liste</button>
+  <div class="nav-actions" id="nav-actions">
+    <button class="btn btn-ghost btn-sm" onclick="openLoginModal()">Se connecter</button>
+    <button class="btn btn-primary btn-sm" onclick="showCreate()">✨ Créer ma liste</button>
+  </div>
 </nav>
 
 <!-- ───── LANDING VIEW ───── -->
@@ -450,10 +363,7 @@
 <!-- ───── PROFILE VIEW ───── -->
 <div id="view-profile" class="view">
   <div id="profile-content">
-    <div class="loader">
-      <div class="spinner"></div>
-      <p>Chargement de la wishlist…</p>
-    </div>
+    <div class="loader"><div class="spinner"></div><p>Chargement de la wishlist…</p></div>
   </div>
 </div>
 
@@ -478,15 +388,16 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="f-username">Username <span style="color:var(--coral)">*</span></label>
-          <input type="text" id="f-username" placeholder="nylz" pattern="[a-zA-Z0-9_-]+" required />
-          <div class="hint">Sera l'URL de ta page : offremoi.fr/<strong id="username-preview">nylz</strong></div>
-        </div>
-
-        <div class="form-group">
-          <label for="f-displayname">Nom affiché <span style="color:var(--coral)">*</span></label>
-          <input type="text" id="f-displayname" placeholder="Nylz" required />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-username">Username <span style="color:var(--coral)">*</span></label>
+            <input type="text" id="f-username" placeholder="nylz" pattern="[a-zA-Z0-9_-]+" required />
+            <div class="hint">offremoi.fr/<strong id="username-preview">nylz</strong></div>
+          </div>
+          <div class="form-group">
+            <label for="f-displayname">Nom affiché <span style="color:var(--coral)">*</span></label>
+            <input type="text" id="f-displayname" placeholder="Nylz" required />
+          </div>
         </div>
 
         <div class="form-group">
@@ -501,8 +412,96 @@
           <button type="button" class="add-item-btn" onclick="addItemRow()">+ Ajouter un cadeau</button>
         </div>
 
+        <hr class="form-divider" data-label="MON COMPTE" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-password">Mot de passe <span style="color:var(--coral)">*</span></label>
+            <input type="password" id="f-password" placeholder="6 caractères min" required minlength="6" />
+          </div>
+          <div class="form-group">
+            <label for="f-password2">Confirmer <span style="color:var(--coral)">*</span></label>
+            <input type="password" id="f-password2" placeholder="Même mot de passe" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="hint">🔒 Ton mot de passe te permet de modifier ta liste plus tard.</div>
+        </div>
+
         <button type="submit" class="btn btn-primary form-submit">🚀 Créer ma liste</button>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- ───── DASHBOARD VIEW ───── -->
+<div id="view-dashboard" class="view">
+  <div class="dashboard-section">
+    <div class="dashboard-header">
+      <h2>Mon tableau de bord 🎁</h2>
+      <button class="btn btn-ghost btn-sm" onclick="handleLogout()">🚪 Se déconnecter</button>
+    </div>
+
+    <div id="link-banner-container"></div>
+
+    <div class="dashboard-stats" id="dashboard-stats"></div>
+
+    <div class="dashboard-card">
+      <h3>Ma wishlist</h3>
+      <div id="dashboard-items-list"></div>
+      <div class="add-item-form" id="add-item-form">
+        <div class="add-item-form-row">
+          <input type="text" id="new-item-name" placeholder="Nom du produit" />
+          <input type="url" id="new-item-url" placeholder="https://amazon.fr/dp/..." />
+          <input type="text" id="new-item-price" placeholder="89€" style="max-width:90px;" />
+        </div>
+        <div style="display:flex;gap:.6rem;margin-top:.4rem;">
+          <button class="btn btn-primary btn-sm" onclick="submitNewItem()">Ajouter</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleAddItemForm()">Annuler</button>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-sm" style="margin-top:1rem;width:100%;justify-content:center;" onclick="toggleAddItemForm()">+ Ajouter un cadeau</button>
+    </div>
+
+    <div style="text-align:center;margin-top:1rem;">
+      <button class="btn btn-ghost btn-sm" id="btn-view-my-page" onclick="">👀 Voir ma page publique</button>
+    </div>
+  </div>
+</div>
+
+<!-- ───── LOGIN MODAL ───── -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <h2>Bon retour 👋</h2>
+    <p>Connecte-toi pour gérer ta wishlist.</p>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('login')">Se connecter</button>
+      <button class="modal-tab" onclick="switchTab('forgot')">Mot de passe oublié</button>
+    </div>
+
+    <div id="tab-login">
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="login-username" placeholder="ton-username" required />
+        </div>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" id="login-password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Se connecter</button>
+      </form>
+      <p style="text-align:center;margin-top:1rem;font-size:.85rem;color:var(--muted);">
+        Pas encore de liste ? <a href="#" onclick="closeLoginModal();showCreate();return false;" style="color:var(--indigo);font-weight:600;">Créer la mienne</a>
+      </p>
+    </div>
+
+    <div id="tab-forgot" style="display:none;">
+      <p style="background:#fef3c7;border-radius:12px;padding:1rem;font-size:.9rem;color:#92400e;">
+        🔑 Pour récupérer l'accès à ta liste, contacte le support en mentionnant ton username.
+      </p>
     </div>
   </div>
 </div>
@@ -514,47 +513,74 @@
   let currentView = 'landing';
   let selectedEmoji = '🎮';
   let itemCount = 0;
+  let authToken = localStorage.getItem('om_token');
+  let authUsername = localStorage.getItem('om_username');
+
+  // ─── Init ───
+  (function init() {
+    updateNavbar();
+    const path = window.location.pathname.replace(/^\//, '');
+    if (!path || path === 'index.html') showLanding();
+    else if (path === 'create') showCreate();
+    else if (path === 'dashboard') {
+      if (authToken) loadDashboard();
+      else { showLanding(); openLoginModal(); }
+    } else showProfile(path);
+    addItemRow();
+  })();
+
+  window.addEventListener('popstate', () => {
+    const path = window.location.pathname.replace(/^\//, '');
+    if (!path) showLanding();
+    else if (path === 'create') showCreate();
+    else if (path === 'dashboard') loadDashboard();
+    else showProfile(path);
+  });
+
+  // ─── Navbar ───
+  function updateNavbar() {
+    const nav = document.getElementById('nav-actions');
+    if (authToken && authUsername) {
+      nav.innerHTML = `
+        <span style="font-size:.85rem;color:var(--muted);font-weight:600;">@${escHtml(authUsername)}</span>
+        <button class="btn btn-primary btn-sm" onclick="loadDashboard()">📊 Mon tableau de bord</button>`;
+    } else {
+      nav.innerHTML = `
+        <button class="btn btn-ghost btn-sm" onclick="openLoginModal()">Se connecter</button>
+        <button class="btn btn-primary btn-sm" onclick="showCreate()">✨ Créer ma liste</button>`;
+    }
+  }
 
   // ─── Router ───
   function showLanding() {
-    setView('landing');
-    history.pushState({}, '', '/');
+    setView('landing'); history.pushState({}, '', '/');
   }
-
   function showProfile(username) {
-    setView('profile');
-    history.pushState({}, '', '/' + username);
-    loadProfile(username);
+    setView('profile'); history.pushState({}, '', '/' + username); loadProfile(username);
   }
-
   function showCreate() {
-    setView('create');
-    history.pushState({}, '', '/create');
+    setView('create'); history.pushState({}, '', '/create');
   }
-
   function setView(name) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById('view-' + name).classList.add('active');
-    currentView = name;
-    window.scrollTo(0, 0);
+    currentView = name; window.scrollTo(0, 0);
   }
 
-  // ─── Load profile ───
+  // ─── Profile ───
   async function loadProfile(username) {
     const container = document.getElementById('profile-content');
     container.innerHTML = `<div class="loader"><div class="spinner"></div><p>Chargement…</p></div>`;
-
     try {
       const res = await fetch('/api/wishlists/' + username);
       if (!res.ok) throw new Error('not found');
-      const data = await res.json();
-      renderProfile(data);
-    } catch (e) {
+      renderProfile(await res.json());
+    } catch {
       container.innerHTML = `
         <div class="empty-state">
           <div class="big-emoji">😢</div>
           <h2>Wishlist introuvable</h2>
-          <p style="margin:.5rem 0 1.5rem;">Le créateur <strong>@${username}</strong> n'a pas encore de liste OffreMoi.</p>
+          <p style="margin:.5rem 0 1.5rem;">Le créateur <strong>@${escHtml(username)}</strong> n'a pas encore de liste OffreMoi.</p>
           <button class="btn btn-primary" onclick="showCreate()">Créer la mienne</button>
         </div>`;
     }
@@ -562,8 +588,8 @@
 
   function renderProfile(data) {
     const container = document.getElementById('profile-content');
-    const profileUrl = window.location.href;
-
+    const profileUrl = window.location.origin + '/' + data.username;
+    const isOwner = authUsername === data.username;
     const itemsHtml = data.items.length === 0
       ? `<div class="empty-state"><div class="big-emoji">🎁</div><p>Aucun cadeau pour l'instant…</p></div>`
       : `<div class="wishlist-grid">${data.items.map(item => `
@@ -574,16 +600,16 @@
             <a href="${escHtml(item.affiliateUrl || item.url)}" target="_blank" rel="noopener" class="btn btn-coral">🎁 Offrir ce cadeau</a>
           </div>`).join('')}
         </div>`;
-
     container.innerHTML = `
       <div class="profile-header">
         <div class="profile-avatar">${data.emoji || '🎁'}</div>
         <h1>${escHtml(data.displayName)}</h1>
         <p>${escHtml(data.bio || '')}</p>
         <div class="profile-actions">
-          <button class="btn btn-coral" onclick="toggleFollow(this, '${data.username}')">❤️ Suivre ${escHtml(data.displayName)}</button>
+          <button class="btn btn-coral" onclick="toggleFollow(this,'${data.username}')">❤️ Suivre ${escHtml(data.displayName)}</button>
           <button class="btn btn-ghost" onclick="copyLink('${profileUrl}')">🔗 Copier le lien</button>
           <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('Offrez un cadeau à ' + data.displayName + ' ! 🎁 ' + profileUrl)}" target="_blank" rel="noopener" class="btn btn-ghost">𝕏 Partager</a>
+          ${isOwner ? `<button class="btn btn-outline btn-sm" onclick="loadDashboard()">✏️ Modifier ma liste</button>` : ''}
         </div>
       </div>
       ${itemsHtml}
@@ -591,19 +617,19 @@
         <p style="color:var(--muted);font-size:.9rem;margin-bottom:.8rem;">Tu veux ta propre liste ?</p>
         <button class="btn btn-primary" onclick="showCreate()">✨ Créer ma liste gratuite</button>
       </div>`;
+    // Update follow button state
+    const followBtn = container.querySelector('[onclick*="toggleFollow"]');
+    if (followBtn && localStorage.getItem('follow_' + data.username)) {
+      followBtn.textContent = '💜 Abonné·e !';
+    }
   }
 
   function toggleFollow(btn, username) {
     const key = 'follow_' + username;
-    const following = localStorage.getItem(key);
-    if (following) {
-      localStorage.removeItem(key);
-      btn.textContent = '❤️ Suivre';
-      showToast('Tu ne suis plus ce créateur', 'error');
+    if (localStorage.getItem(key)) {
+      localStorage.removeItem(key); btn.textContent = '❤️ Suivre'; showToast('Tu ne suis plus ce créateur', 'error');
     } else {
-      localStorage.setItem(key, '1');
-      btn.textContent = '💜 Abonné·e !';
-      showToast('Tu suis maintenant ce créateur ! 💜');
+      localStorage.setItem(key, '1'); btn.textContent = '💜 Abonné·e !'; showToast('Tu suis maintenant ce créateur ! 💜');
     }
   }
 
@@ -611,35 +637,187 @@
     navigator.clipboard.writeText(url).then(() => showToast('Lien copié ! 🔗', 'success'));
   }
 
+  // ─── Dashboard ───
+  async function loadDashboard() {
+    if (!authToken) { openLoginModal(); return; }
+    setView('dashboard');
+    history.pushState({}, '', '/dashboard');
+
+    try {
+      const res = await fetch('/api/me', { headers: { 'Authorization': 'Bearer ' + authToken } });
+      if (res.status === 401) { handleLogout(); return; }
+      const { username, wishlist } = await res.json();
+
+      // Link banner
+      document.getElementById('link-banner-container').innerHTML = `
+        <div class="link-banner">
+          <div>
+            <p>Ton lien public 🔗</p>
+            <strong>offre-moi.up.railway.app/${escHtml(username)}</strong>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="copyLink('${window.location.origin}/${escHtml(username)}')">Copier</button>
+        </div>`;
+
+      // Stats
+      const items = wishlist ? wishlist.items : [];
+      const totalValue = items.reduce((sum, i) => {
+        const n = parseFloat((i.price || '0').replace(/[^0-9.]/g, ''));
+        return sum + (isNaN(n) ? 0 : n);
+      }, 0);
+      document.getElementById('dashboard-stats').innerHTML = `
+        <div class="stat-card"><div class="stat-number">${items.length}</div><div class="stat-label">Cadeaux dans la liste</div></div>
+        <div class="stat-card"><div class="stat-number">${totalValue > 0 ? totalValue.toFixed(0) + '€' : '—'}</div><div class="stat-label">Valeur totale estimée</div></div>`;
+
+      // Items list
+      renderDashboardItems(items);
+
+      // View my page btn
+      document.getElementById('btn-view-my-page').onclick = () => showProfile(username);
+
+    } catch (e) {
+      showToast('Erreur de chargement', 'error');
+    }
+  }
+
+  function renderDashboardItems(items) {
+    const el = document.getElementById('dashboard-items-list');
+    if (items.length === 0) {
+      el.innerHTML = `<p style="color:var(--muted);text-align:center;padding:1rem;font-size:.9rem;">Aucun cadeau pour l'instant. Ajoute-en un !</p>`;
+      return;
+    }
+    el.innerHTML = items.map(item => `
+      <div class="dashboard-item" id="di-${item.id}">
+        <div class="dashboard-item-info">
+          <div class="dashboard-item-name">${escHtml(item.name)}</div>
+          ${item.price ? `<div class="dashboard-item-price">${escHtml(item.price)}</div>` : ''}
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="deleteItem('${item.id}')">✕</button>
+      </div>`).join('');
+  }
+
+  async function deleteItem(itemId) {
+    if (!confirm('Supprimer ce cadeau ?')) return;
+    const res = await fetch(`/api/wishlists/${authUsername}/items/${itemId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + authToken }
+    });
+    if (res.ok) {
+      document.getElementById('di-' + itemId)?.remove();
+      showToast('Cadeau supprimé', 'success');
+    } else {
+      showToast('Erreur lors de la suppression', 'error');
+    }
+  }
+
+  function toggleAddItemForm() {
+    document.getElementById('add-item-form').classList.toggle('open');
+    document.getElementById('new-item-name').focus();
+  }
+
+  async function submitNewItem() {
+    const name = document.getElementById('new-item-name').value.trim();
+    const url = document.getElementById('new-item-url').value.trim();
+    const price = document.getElementById('new-item-price').value.trim();
+    if (!name) { showToast('Nom requis', 'error'); return; }
+
+    const res = await fetch(`/api/wishlists/${authUsername}/items`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
+      body: JSON.stringify({ name, url, price })
+    });
+    const item = await res.json();
+    if (res.ok) {
+      document.getElementById('new-item-name').value = '';
+      document.getElementById('new-item-url').value = '';
+      document.getElementById('new-item-price').value = '';
+      document.getElementById('add-item-form').classList.remove('open');
+      showToast('Cadeau ajouté ! 🎁', 'success');
+      loadDashboard();
+    } else {
+      showToast(item.error || 'Erreur', 'error');
+    }
+  }
+
+  // ─── Auth ───
+  function openLoginModal() {
+    document.getElementById('modal-login').classList.add('open');
+    setTimeout(() => document.getElementById('login-username').focus(), 100);
+  }
+  function closeLoginModal() {
+    document.getElementById('modal-login').classList.remove('open');
+  }
+  document.getElementById('modal-login').addEventListener('click', function(e) {
+    if (e.target === this) closeLoginModal();
+  });
+
+  function switchTab(tab) {
+    document.querySelectorAll('.modal-tab').forEach((t, i) => t.classList.toggle('active', (i === 0) === (tab === 'login')));
+    document.getElementById('tab-login').style.display = tab === 'login' ? 'block' : 'none';
+    document.getElementById('tab-forgot').style.display = tab === 'forgot' ? 'block' : 'none';
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type=submit]');
+    btn.disabled = true; btn.textContent = '⏳ Connexion…';
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    btn.disabled = false; btn.textContent = 'Se connecter';
+
+    if (res.ok) {
+      authToken = data.token; authUsername = data.username;
+      localStorage.setItem('om_token', authToken);
+      localStorage.setItem('om_username', authUsername);
+      updateNavbar(); closeLoginModal();
+      showToast('Connecté ! 👋', 'success');
+      loadDashboard();
+    } else {
+      showToast(data.error || 'Identifiants incorrects', 'error');
+    }
+  }
+
+  async function handleLogout() {
+    if (authToken) {
+      await fetch('/api/logout', { method: 'POST', headers: { 'Authorization': 'Bearer ' + authToken } }).catch(() => {});
+    }
+    authToken = null; authUsername = null;
+    localStorage.removeItem('om_token'); localStorage.removeItem('om_username');
+    updateNavbar(); showLanding(); showToast('Déconnecté', 'success');
+  }
+
   // ─── Create form ───
   function addItemRow() {
     const id = ++itemCount;
     const row = document.createElement('div');
-    row.className = 'item-row';
-    row.id = 'item-' + id;
+    row.className = 'item-row'; row.id = 'item-' + id;
     row.innerHTML = `
       <input type="text" placeholder="Nom du produit" id="item-name-${id}" />
       <input type="url" placeholder="https://amazon.fr/dp/..." id="item-url-${id}" />
-      <input type="text" placeholder="Prix (ex: 89€)" style="grid-column:1;grid-row:2;" id="item-price-${id}" />
+      <input type="text" placeholder="Prix (89€)" style="grid-column:1;grid-row:2;" id="item-price-${id}" />
       <button type="button" class="remove-item" onclick="removeItem(${id})" title="Supprimer" style="grid-column:2;grid-row:2;">✕</button>`;
     document.getElementById('items-list').appendChild(row);
   }
-
-  function removeItem(id) {
-    document.getElementById('item-' + id)?.remove();
-  }
+  function removeItem(id) { document.getElementById('item-' + id)?.remove(); }
 
   async function handleCreateForm(e) {
     e.preventDefault();
+    const password = document.getElementById('f-password').value;
+    const password2 = document.getElementById('f-password2').value;
+    if (password !== password2) { showToast('Les mots de passe ne correspondent pas', 'error'); return; }
+
     const btn = e.target.querySelector('[type=submit]');
-    btn.disabled = true;
-    btn.textContent = '⏳ Création en cours…';
+    btn.disabled = true; btn.textContent = '⏳ Création en cours…';
 
     const username = document.getElementById('f-username').value.trim();
     const displayName = document.getElementById('f-displayname').value.trim();
     const bio = document.getElementById('f-bio').value.trim();
-
-    // Collect items
     const items = [];
     document.querySelectorAll('.item-row').forEach(row => {
       const id = row.id.replace('item-', '');
@@ -650,25 +828,27 @@
     });
 
     try {
-      const res = await fetch('/api/wishlists', {
+      const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, displayName, bio, emoji: selectedEmoji, items })
+        body: JSON.stringify({ username, displayName, bio, emoji: selectedEmoji, items, password })
       });
-
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Erreur');
 
+      authToken = data.token; authUsername = data.username;
+      localStorage.setItem('om_token', authToken);
+      localStorage.setItem('om_username', authUsername);
+      updateNavbar();
       showToast('🎉 Liste créée avec succès !', 'success');
-      setTimeout(() => showProfile(data.username), 1000);
+      setTimeout(() => showProfile(data.username), 800);
     } catch (err) {
       showToast('❌ ' + err.message, 'error');
-      btn.disabled = false;
-      btn.textContent = '🚀 Créer ma liste';
+      btn.disabled = false; btn.textContent = '🚀 Créer ma liste';
     }
   }
 
-  // ─── Emoji picker ───
+  // ─── Misc ───
   document.querySelectorAll('.emoji-option').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.emoji-option').forEach(b => b.classList.remove('selected'));
@@ -676,51 +856,21 @@
       selectedEmoji = btn.dataset.emoji;
     });
   });
-
-  // ─── Username preview ───
   document.getElementById('f-username')?.addEventListener('input', function() {
     document.getElementById('username-preview').textContent = this.value || 'ton-username';
   });
-
-  // ─── Bio counter ───
   document.getElementById('f-bio')?.addEventListener('input', function() {
     document.getElementById('bio-count').textContent = this.value.length;
   });
 
-  // ─── Toast ───
   function showToast(msg, type = '') {
     const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show' + (type ? ' ' + type : '');
+    t.textContent = msg; t.className = 'toast show' + (type ? ' ' + type : '');
     setTimeout(() => t.classList.remove('show'), 3000);
   }
-
-  // ─── HTML escape ───
   function escHtml(str) {
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
-
-  // ─── Client-side routing (handle direct URL visits) ───
-  (function init() {
-    const path = window.location.pathname.replace(/^\//, '');
-    if (!path || path === 'index.html') {
-      showLanding();
-    } else if (path === 'create') {
-      showCreate();
-    } else {
-      showProfile(path);
-    }
-
-    // Pre-add one empty item row in create form
-    addItemRow();
-  })();
-
-  window.addEventListener('popstate', () => {
-    const path = window.location.pathname.replace(/^\//, '');
-    if (!path) showLanding();
-    else if (path === 'create') showCreate();
-    else showProfile(path);
-  });
 </script>
 </body>
 </html>
