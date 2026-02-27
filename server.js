@@ -26,9 +26,15 @@ function writeDB(data) {
 }
 
 // Helper: build affiliate URL
-// TODO: add affiliate tag ?tag=offremoi-21
 function buildAffiliateUrl(url) {
-  return url;
+  if (!url || !url.includes('amazon.fr')) return url;
+  try {
+    const u = new URL(url);
+    u.searchParams.set('tag', 'thedanyg-21');
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
 }
 
 // GET /api/wishlists/:username
