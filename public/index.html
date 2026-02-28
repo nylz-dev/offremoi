@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OffreMoi 🎁 — Ta wishlist anonyme</title>
+  <title>OffreMoi 🎁 — Ta wishlist anonyme pour créateurs FR</title>
+  <meta name="description" content="Reçois des cadeaux de tes fans sans exposer ton adresse. La wishlist pensée pour les créateurs français." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -21,6 +22,7 @@
       --border: #f0e8e8;
       --shadow: 0 4px 24px rgba(255,107,107,0.10);
       --shadow-hover: 0 8px 32px rgba(255,107,107,0.18);
+      --green: #16a34a;
     }
 
     body {
@@ -36,7 +38,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
@@ -56,6 +58,8 @@
     .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
     .btn-coral { background: var(--coral); color: #fff; }
     .btn-coral:hover { background: #ff5252; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,107,107,.35); }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: #15803d; transform: translateY(-1px); }
     .btn-outline { background: transparent; color: var(--indigo); border: 2px solid var(--indigo); }
     .btn-outline:hover { background: var(--indigo); color: #fff; }
     .btn-ghost { background: rgba(255,255,255,0.7); color: var(--text); border: 1px solid var(--border); }
@@ -63,6 +67,7 @@
     .btn-danger { background: #fee2e2; color: #dc2626; border: none; }
     .btn-danger:hover { background: #fecaca; }
     .btn-sm { padding: .4rem 1rem; font-size: .85rem; }
+    .btn-block { width: 100%; justify-content: center; }
 
     /* ───── VIEWS ───── */
     .view { display: none; }
@@ -80,8 +85,34 @@
       background: linear-gradient(135deg, #1a1a2e 40%, var(--coral) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.65; }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.65; }
     .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* News banner */
+    .news-banner {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #f59e0b;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      font-size: .9rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .news-banner strong { color: #78350f; }
+
+    /* Use cases pills */
+    .use-cases {
+      display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap;
+      max-width: 760px; margin: 0 auto 3rem;
+    }
+    .use-case-pill {
+      background: rgba(255,255,255,.7); border: 1px solid var(--border);
+      border-radius: 999px; padding: .4rem 1rem; font-size: .85rem; font-weight: 500;
+    }
 
     .features {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -95,6 +126,24 @@
     .feature-icon { font-size: 2rem; margin-bottom: .8rem; }
     .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
     .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.55; }
+    .feature-card .coming-soon {
+      display: inline-block; margin-top: .6rem;
+      background: #f0fdf4; color: var(--green); font-size: .75rem; font-weight: 700;
+      padding: .2rem .6rem; border-radius: 999px; border: 1px solid #bbf7d0;
+    }
+
+    /* How it works */
+    .how-section { max-width: 760px; margin: 0 auto 4rem; padding: 0 1.5rem; }
+    .how-section h2 { font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 2rem; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .step { text-align: center; }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--indigo); color: #fff;
+      font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .step p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
 
     .cta-strip {
       text-align: center; padding: 4rem 1.5rem;
@@ -102,7 +151,6 @@
     }
     .cta-strip h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: .8rem; }
     .cta-strip p { color: rgba(255,255,255,.75); margin-bottom: 2rem; font-size: 1rem; }
-    .cta-strip .btn-coral { font-size: 1.05rem; padding: .85rem 2rem; }
 
     footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: .85rem; }
 
@@ -135,7 +183,7 @@
       color: var(--coral); font-weight: 700; font-size: .9rem;
       padding: .25rem .75rem; border-radius: 8px; align-self: flex-start;
     }
-    .item-card .btn-coral { margin-top: auto; width: 100%; justify-content: center; }
+    .item-card .btn { margin-top: auto; width: 100%; justify-content: center; }
 
     .empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
     .empty-state .big-emoji { font-size: 4rem; margin-bottom: 1rem; }
@@ -149,12 +197,13 @@
 
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .4rem; color: var(--text); }
-    .form-group input, .form-group textarea {
+    .form-group input, .form-group textarea, .form-group select {
       width: 100%; padding: .75rem 1rem; border: 2px solid var(--border);
       border-radius: 12px; font-size: .95rem; font-family: inherit;
       background: #fafafa; transition: border-color .2s; outline: none; color: var(--text);
+      appearance: none;
     }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--indigo); background: #fff; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--indigo); background: #fff; }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-group .hint { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -179,9 +228,19 @@
     .emoji-option:hover { border-color: var(--indigo); background: #f0f0ff; }
     .emoji-option.selected { border-color: var(--indigo); background: rgba(99,102,241,.1); box-shadow: 0 0 0 3px rgba(99,102,241,.2); }
 
+    .creator-types { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: .6rem; }
+    .creator-type-option {
+      padding: .8rem .6rem; border-radius: 12px; border: 2px solid var(--border);
+      background: #fafafa; cursor: pointer; text-align: center; font-size: .85rem;
+      font-weight: 600; transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: .3rem;
+    }
+    .creator-type-option:hover { border-color: var(--indigo); background: #f0f0ff; }
+    .creator-type-option.selected { border-color: var(--indigo); background: rgba(99,102,241,.1); }
+    .creator-type-option .ctype-icon { font-size: 1.4rem; }
+
     .items-list { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1rem; }
     .item-row {
-      display: grid; grid-template-columns: 1fr 1fr auto auto;
+      display: grid; grid-template-columns: 1fr 1fr auto;
       gap: .6rem; align-items: center; background: #fafafa;
       border-radius: 12px; padding: .8rem; border: 1px solid var(--border);
     }
@@ -210,7 +269,11 @@
     }
     .dashboard-header h2 { font-size: 1.6rem; font-weight: 800; }
     .dashboard-card { background: var(--card); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 1.2rem; }
-    .dashboard-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: .8rem; }
+    .dashboard-card-title {
+      font-size: .8rem; font-weight: 700; margin-bottom: 1rem;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .06em;
+      display: flex; align-items: center; justify-content: space-between;
+    }
     .dashboard-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: .8rem; border-radius: 12px; background: #fafafa;
@@ -231,7 +294,6 @@
     .stat-number { font-size: 2rem; font-weight: 900; color: var(--coral); }
     .stat-label { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
 
-    /* Profile link banner */
     .link-banner {
       background: linear-gradient(135deg, var(--indigo), #8b5cf6);
       border-radius: 16px; padding: 1.2rem 1.5rem;
@@ -241,6 +303,29 @@
     .link-banner p { color: rgba(255,255,255,.8); font-size: .85rem; margin-bottom: .2rem; }
     .link-banner strong { color: #fff; font-size: 1rem; word-break: break-all; }
 
+    /* Address section */
+    .address-status {
+      display: flex; align-items: center; gap: .8rem; padding: .8rem;
+      border-radius: 12px; background: #fafafa; border: 1px solid var(--border); margin-bottom: .8rem;
+    }
+    .address-status .addr-icon { font-size: 1.5rem; }
+    .address-status .addr-text { flex: 1; }
+    .address-status .addr-label { font-weight: 700; font-size: .9rem; }
+    .address-status .addr-sublabel { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
+    .address-status.has-address { border-color: #bbf7d0; background: #f0fdf4; }
+    .address-status.has-address .addr-label { color: var(--green); }
+
+    .address-form { display: none; background: #fafafa; border-radius: 12px; padding: 1rem; border: 2px dashed var(--border); margin-top: .6rem; }
+    .address-form.open { display: block; }
+    .address-form .form-group { margin-bottom: .8rem; }
+    .address-form input {
+      width: 100%; padding: .6rem .9rem; border: 2px solid var(--border);
+      border-radius: 10px; font-size: .9rem; font-family: inherit;
+      background: #fff; outline: none; transition: border-color .2s;
+    }
+    .address-form input:focus { border-color: var(--indigo); }
+    .address-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+
     /* Add item form inline */
     .add-item-form {
       background: #fafafa; border-radius: 12px; padding: 1rem;
@@ -248,10 +333,29 @@
     }
     .add-item-form.open { display: block; }
     .add-item-form-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: .6rem; margin-bottom: .6rem; }
-    .add-item-form input { padding: .6rem .9rem; border: 2px solid var(--border); border-radius: 10px; font-size: .9rem; font-family: inherit; background: #fff; outline: none; transition: border-color .2s; }
+    .add-item-form input {
+      padding: .6rem .9rem; border: 2px solid var(--border); border-radius: 10px;
+      font-size: .9rem; font-family: inherit; background: #fff; outline: none; transition: border-color .2s;
+    }
     .add-item-form input:focus { border-color: var(--indigo); }
 
-    /* ───── LOGIN MODAL ───── */
+    /* Orders list */
+    .order-item {
+      padding: .8rem; border-radius: 12px; background: #fafafa;
+      border: 1px solid var(--border); margin-bottom: .6rem;
+      display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+    }
+    .order-status-badge {
+      font-size: .75rem; font-weight: 700; padding: .2rem .6rem;
+      border-radius: 999px; white-space: nowrap;
+    }
+    .status-pending { background: #fef3c7; color: #92400e; }
+    .status-processing { background: #dbeafe; color: #1e40af; }
+    .status-shipped { background: #f0fdf4; color: #15803d; }
+    .status-delivered { background: #dcfce7; color: var(--green); }
+    .status-cancelled { background: #fee2e2; color: #dc2626; }
+
+    /* ───── GIFT MODAL ───── */
     .modal-overlay {
       display: none; position: fixed; inset: 0;
       background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
@@ -264,7 +368,7 @@
       position: relative;
     }
     .modal h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: .5rem; }
-    .modal p { color: var(--muted); margin-bottom: 1.5rem; font-size: .9rem; }
+    .modal p { color: var(--muted); margin-bottom: 1.2rem; font-size: .9rem; }
     .modal-close {
       position: absolute; top: 1rem; right: 1rem;
       background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--muted);
@@ -276,6 +380,25 @@
       font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--muted); transition: all .2s;
     }
     .modal-tab.active { background: #fff; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+
+    /* Gift request form */
+    #gift-modal .gift-item-name {
+      background: linear-gradient(135deg, #fff5f0, #fff0f5);
+      border-radius: 12px; padding: .8rem 1rem; margin-bottom: 1rem;
+      font-weight: 700; font-size: 1rem; text-align: center;
+    }
+    #gift-modal .gift-steps { margin-bottom: 1.2rem; }
+    #gift-modal .gift-step {
+      display: flex; gap: .8rem; align-items: flex-start;
+      padding: .6rem 0; border-bottom: 1px solid var(--border);
+    }
+    #gift-modal .gift-step:last-child { border-bottom: none; }
+    #gift-modal .gift-step-num {
+      min-width: 24px; height: 24px; border-radius: 50%; background: var(--indigo); color: #fff;
+      font-size: .8rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    }
+    #gift-modal .gift-step-text { font-size: .88rem; color: var(--text); line-height: 1.4; }
+    #gift-modal .gift-step-text strong { color: var(--text); }
 
     /* Toast */
     .toast {
@@ -289,7 +412,6 @@
     .toast.success { background: #16a34a; }
     .toast.error { background: #dc2626; }
 
-    /* Loading */
     .loader { text-align: center; padding: 4rem; color: var(--muted); }
     .spinner {
       width: 40px; height: 40px; border: 3px solid var(--border);
@@ -301,12 +423,12 @@
     /* ───── RESPONSIVE ───── */
     @media (max-width: 600px) {
       nav { padding: .8rem 1rem; }
-      .item-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
-      .item-row .remove-item { grid-column: 2; grid-row: 2; justify-self: end; }
       .hero { padding: 3rem 1rem 2rem; }
-      .form-row { grid-template-columns: 1fr; }
+      .form-row, .address-form-row { grid-template-columns: 1fr; }
       .modal { padding: 1.5rem; }
       .add-item-form-row { grid-template-columns: 1fr; }
+      .item-row { grid-template-columns: 1fr auto; grid-template-rows: auto auto; }
+      .creator-types { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -324,40 +446,99 @@
 <!-- ───── LANDING VIEW ───── -->
 <div id="view-landing" class="view active">
   <section class="hero">
-    <div class="hero-badge">🇫🇷 Pour les créateurs français</div>
-    <h1>Ta liste de cadeaux.<br/>Zéro adresse exposée.</h1>
-    <p>Tes fans t'offrent ce que tu veux sur Amazon. Ils ne voient jamais ton adresse.</p>
+    <div class="hero-badge">🇫🇷 La wishlist des créateurs français</div>
+    <h1>Reçois des cadeaux.<br/>Garde ton adresse privée.</h1>
+    <p>Tes fans t'offrent ce que tu veux. Ton adresse ne quitte jamais OffreMoi. Gratuit pour les créateurs.</p>
     <div class="hero-cta">
       <button class="btn btn-coral" style="font-size:1.05rem;padding:.85rem 2rem;" onclick="showCreate()">🎁 Créer ma liste gratuite</button>
       <button class="btn btn-ghost" onclick="showProfile('nylz')">👀 Voir un exemple</button>
     </div>
   </section>
 
+  <div class="news-banner" style="padding: .8rem 1.5rem;">
+    <span style="font-size:1.4rem;">⚠️</span>
+    <div>
+      <strong>Amazon supprime la confidentialité des listes d'envies le 25 mars 2026.</strong>
+      Ton adresse sera visible aux vendeurs tiers. OffreMoi est la solution — ton adresse reste cachée.
+    </div>
+  </div>
+
+  <div class="use-cases">
+    <span class="use-case-pill">🎮 Streameurs Twitch</span>
+    <span class="use-case-pill">📹 YouTubeurs</span>
+    <span class="use-case-pill">🎵 TikTokers</span>
+    <span class="use-case-pill">📸 Instagrameurs</span>
+    <span class="use-case-pill">💌 Créateurs MYM / OF</span>
+    <span class="use-case-pill">✍️ Newsletters</span>
+    <span class="use-case-pill">🎙️ Podcasteurs</span>
+  </div>
+
   <div class="features">
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
       <h3>Adresse 100% privée</h3>
-      <p>Tes fans voient les cadeaux, jamais ton domicile. Amazon expédie directement, sans révéler ton adresse.</p>
+      <p>Ton adresse est stockée de façon chiffrée. Tes fans ne la voient jamais. C'est OffreMoi qui gère la livraison.</p>
+      <span class="coming-soon">✅ Bientôt disponible</span>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🎁</div>
-      <h3>Liste Amazon en 2 min</h3>
-      <p>Colle des liens Amazon, on fait le reste. Tes fans voient une belle page et peuvent t'offrir ce que tu veux.</p>
+      <h3>Ta wishlist en 2 minutes</h3>
+      <p>Colle des liens Amazon, personnalise ta page, partage ton lien. Simple, beau, gratuit.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">💰</div>
-      <h3>Tu gagnes des commissions</h3>
-      <p>Chaque achat via ta liste te rapporte des commissions Amazon. Tu crées, tes fans offrent, tu gagnes.</p>
+      <h3>Commission transparente</h3>
+      <p>5% prélevés sur chaque cadeau pour couvrir le service. Affiché clairement côté fan. Zéro surprise.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Livraison en 24-48h</h3>
+      <p>Notre équipe traite et expédie tes cadeaux sous 24-48h après confirmation du paiement.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🇫🇷</div>
+      <h3>Support 100% français</h3>
+      <p>Une équipe FR qui répond en français, qui comprend les créateurs FR. Pas un bot anglophone.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Mobile-first</h3>
+      <p>Tes fans commandent depuis leur téléphone. Interface fluide et rapide, aucun bug.</p>
+    </div>
+  </div>
+
+  <div class="how-section">
+    <h2>Comment ça marche ?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tu crées ta liste</h3>
+        <p>Ajoute tes cadeaux Amazon, entre ton adresse (chiffrée, invisible), partage ton lien.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Un fan choisit</h3>
+        <p>Il sélectionne un cadeau sur ta page et paie directement via OffreMoi.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>OffreMoi livre</h3>
+        <p>On commande sur Amazon et on livre chez toi. Le fan ne voit jamais ton adresse.</p>
+      </div>
     </div>
   </div>
 
   <div class="cta-strip">
     <h2>Prêt à recevoir des cadeaux ? 🎉</h2>
-    <p>Rejoins les créateurs qui utilisent déjà OffreMoi</p>
-    <button class="btn btn-coral" onclick="showCreate()">Créer ta liste gratuitement →</button>
+    <p>Gratuit pour les créateurs. Paiement sécurisé côté fans. Adresse privée.</p>
+    <button class="btn btn-coral" style="font-size:1.05rem;padding:.85rem 2rem;" onclick="showCreate()">Créer ta liste gratuitement →</button>
   </div>
 
-  <footer>OffreMoi 2026 • Inspiré de <a href="https://throne.com" target="_blank" style="color:var(--coral);text-decoration:none;">Throne.com</a> • Fait pour les créateurs FR 🇫🇷</footer>
+  <footer>
+    OffreMoi 2026 • Inspiré de <a href="https://throne.com" target="_blank" style="color:var(--coral);text-decoration:none;">Throne.com</a> •
+    Fait pour les créateurs FR 🇫🇷 •
+    <a href="mailto:support@offremoi.fr" style="color:var(--coral);text-decoration:none;">Contact support</a>
+  </footer>
 </div>
 
 <!-- ───── PROFILE VIEW ───── -->
@@ -371,10 +552,40 @@
 <div id="view-create" class="view">
   <div class="create-section">
     <h2>Créer ta liste 🎁</h2>
-    <p class="subtitle">2 minutes et ta wishlist est en ligne. C'est gratuit.</p>
+    <p class="subtitle">2 minutes et ta wishlist est en ligne. Gratuit.</p>
 
     <div class="form-card">
       <form id="create-form" onsubmit="handleCreateForm(event)">
+
+        <div class="form-group">
+          <label>Tu es quel type de créateur ?</label>
+          <div class="creator-types" id="creator-type-picker">
+            <div class="creator-type-option selected" data-type="streamer">
+              <span class="ctype-icon">🎮</span>Streamer
+            </div>
+            <div class="creator-type-option" data-type="youtube">
+              <span class="ctype-icon">📹</span>YouTubeur
+            </div>
+            <div class="creator-type-option" data-type="tiktok">
+              <span class="ctype-icon">🎵</span>TikTokeur
+            </div>
+            <div class="creator-type-option" data-type="instagram">
+              <span class="ctype-icon">📸</span>Instagram
+            </div>
+            <div class="creator-type-option" data-type="mym_of">
+              <span class="ctype-icon">💌</span>MYM / OF
+            </div>
+            <div class="creator-type-option" data-type="newsletter">
+              <span class="ctype-icon">✍️</span>Newsletter
+            </div>
+            <div class="creator-type-option" data-type="podcast">
+              <span class="ctype-icon">🎙️</span>Podcast
+            </div>
+            <div class="creator-type-option" data-type="autre">
+              <span class="ctype-icon">🌟</span>Autre
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
           <label>Ton avatar</label>
@@ -385,6 +596,8 @@
             <button type="button" class="emoji-option" data-emoji="📹">📹</button>
             <button type="button" class="emoji-option" data-emoji="💻">💻</button>
             <button type="button" class="emoji-option" data-emoji="✍️">✍️</button>
+            <button type="button" class="emoji-option" data-emoji="💌">💌</button>
+            <button type="button" class="emoji-option" data-emoji="🌟">🌟</button>
           </div>
         </div>
 
@@ -403,7 +616,7 @@
         <div class="form-group">
           <label for="f-bio">Bio <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(140 max)</span></label>
           <textarea id="f-bio" maxlength="140" placeholder="Builder, créateur de contenu, passionné d'IA 🚀"></textarea>
-          <div class="hint"><span id="bio-count">0</span>/140 caractères</div>
+          <div class="hint"><span id="bio-count">0</span>/140</div>
         </div>
 
         <div class="form-group">
@@ -424,9 +637,6 @@
             <input type="password" id="f-password2" placeholder="Même mot de passe" required />
           </div>
         </div>
-        <div class="form-group">
-          <div class="hint">🔒 Ton mot de passe te permet de modifier ta liste plus tard.</div>
-        </div>
 
         <button type="submit" class="btn btn-primary form-submit">🚀 Créer ma liste</button>
       </form>
@@ -439,15 +649,52 @@
   <div class="dashboard-section">
     <div class="dashboard-header">
       <h2>Mon tableau de bord 🎁</h2>
-      <button class="btn btn-ghost btn-sm" onclick="handleLogout()">🚪 Se déconnecter</button>
+      <button class="btn btn-ghost btn-sm" onclick="handleLogout()">🚪 Déconnexion</button>
     </div>
 
     <div id="link-banner-container"></div>
-
     <div class="dashboard-stats" id="dashboard-stats"></div>
 
+    <!-- Address card -->
     <div class="dashboard-card">
-      <h3>Ma wishlist</h3>
+      <div class="dashboard-card-title">
+        🏠 Adresse de livraison
+        <span style="font-size:.75rem;color:var(--indigo);font-weight:600;">Chiffrée, jamais visible par tes fans</span>
+      </div>
+      <div id="address-status-display"></div>
+      <div class="address-form" id="address-form">
+        <div class="form-group">
+          <label>Nom complet</label>
+          <input type="text" id="addr-fullname" placeholder="Prénom Nom" />
+        </div>
+        <div class="form-group">
+          <label>Adresse (ligne 1)</label>
+          <input type="text" id="addr-line1" placeholder="12 rue des Fleurs" />
+        </div>
+        <div class="form-group">
+          <label>Adresse (ligne 2, optionnel)</label>
+          <input type="text" id="addr-line2" placeholder="Appartement, étage..." />
+        </div>
+        <div class="address-form-row">
+          <div class="form-group">
+            <label>Code postal</label>
+            <input type="text" id="addr-postal" placeholder="75001" />
+          </div>
+          <div class="form-group">
+            <label>Ville</label>
+            <input type="text" id="addr-city" placeholder="Paris" />
+          </div>
+        </div>
+        <div style="display:flex;gap:.6rem;margin-top:.4rem;">
+          <button class="btn btn-green btn-sm" onclick="submitAddress()">🔒 Enregistrer (chiffré)</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleAddressForm()">Annuler</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist card -->
+    <div class="dashboard-card">
+      <div class="dashboard-card-title">Ma wishlist</div>
       <div id="dashboard-items-list"></div>
       <div class="add-item-form" id="add-item-form">
         <div class="add-item-form-row">
@@ -460,11 +707,17 @@
           <button class="btn btn-ghost btn-sm" onclick="toggleAddItemForm()">Annuler</button>
         </div>
       </div>
-      <button class="btn btn-outline btn-sm" style="margin-top:1rem;width:100%;justify-content:center;" onclick="toggleAddItemForm()">+ Ajouter un cadeau</button>
+      <button class="btn btn-outline btn-sm btn-block" style="margin-top:1rem;" onclick="toggleAddItemForm()">+ Ajouter un cadeau</button>
+    </div>
+
+    <!-- Gifts received -->
+    <div class="dashboard-card">
+      <div class="dashboard-card-title">🎁 Cadeaux reçus</div>
+      <div id="orders-list"><div style="color:var(--muted);font-size:.9rem;text-align:center;padding:1rem;">Chargement…</div></div>
     </div>
 
     <div style="text-align:center;margin-top:1rem;">
-      <button class="btn btn-ghost btn-sm" id="btn-view-my-page" onclick="">👀 Voir ma page publique</button>
+      <button class="btn btn-ghost btn-sm" id="btn-view-my-page">👀 Voir ma page publique</button>
     </div>
   </div>
 </div>
@@ -500,9 +753,51 @@
 
     <div id="tab-forgot" style="display:none;">
       <p style="background:#fef3c7;border-radius:12px;padding:1rem;font-size:.9rem;color:#92400e;">
-        🔑 Pour récupérer l'accès à ta liste, contacte le support en mentionnant ton username.
+        🔑 Contacte le support à <strong>support@offremoi.fr</strong> en mentionnant ton username.
       </p>
     </div>
+  </div>
+</div>
+
+<!-- ───── GIFT MODAL ───── -->
+<div class="modal-overlay" id="gift-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGiftModal()">✕</button>
+    <h2>🎁 Offrir ce cadeau</h2>
+    <div id="gift-item-name" class="gift-item-name"></div>
+    <p>Comment ça marche :</p>
+    <div class="gift-steps">
+      <div class="gift-step">
+        <div class="gift-step-num">1</div>
+        <div class="gift-step-text"><strong>Tu remplis le formulaire ci-dessous</strong> avec ton prénom et ton message (optionnel).</div>
+      </div>
+      <div class="gift-step">
+        <div class="gift-step-num">2</div>
+        <div class="gift-step-text"><strong>OffreMoi confirme ta demande</strong> et te contacte pour le paiement sécurisé (bientôt automatique).</div>
+      </div>
+      <div class="gift-step">
+        <div class="gift-step-num">3</div>
+        <div class="gift-step-text"><strong>On expédie le cadeau directement</strong> chez le créateur. Son adresse reste confidentielle.</div>
+      </div>
+    </div>
+    <form id="gift-form" onsubmit="submitGiftRequest(event)">
+      <div class="form-group">
+        <label>Ton prénom (visible par le créateur)</label>
+        <input type="text" id="gift-fan-name" placeholder="Prénom" required />
+      </div>
+      <div class="form-group">
+        <label>Ton email (pour le suivi)</label>
+        <input type="email" id="gift-fan-email" placeholder="ton@email.fr" />
+      </div>
+      <div class="form-group">
+        <label>Message pour le créateur (optionnel)</label>
+        <input type="text" id="gift-message" placeholder="Un petit mot sympa 💜" maxlength="200" />
+      </div>
+      <button type="submit" class="btn btn-coral form-submit">Envoyer ma demande de cadeau 🎁</button>
+    </form>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:.8rem;text-align:center;">
+      Le paiement en ligne arrive bientôt. Pour l'instant, nous te contacterons par email.
+    </p>
   </div>
 </div>
 
@@ -512,9 +807,11 @@
   // ─── State ───
   let currentView = 'landing';
   let selectedEmoji = '🎮';
+  let selectedCreatorType = 'streamer';
   let itemCount = 0;
   let authToken = localStorage.getItem('om_token');
   let authUsername = localStorage.getItem('om_username');
+  let currentGiftItem = null;   // { id, name, creatorUsername }
 
   // ─── Init ───
   (function init() {
@@ -552,15 +849,9 @@
   }
 
   // ─── Router ───
-  function showLanding() {
-    setView('landing'); history.pushState({}, '', '/');
-  }
-  function showProfile(username) {
-    setView('profile'); history.pushState({}, '', '/' + username); loadProfile(username);
-  }
-  function showCreate() {
-    setView('create'); history.pushState({}, '', '/create');
-  }
+  function showLanding() { setView('landing'); history.pushState({}, '', '/'); }
+  function showProfile(username) { setView('profile'); history.pushState({}, '', '/' + username); loadProfile(username); }
+  function showCreate() { setView('create'); history.pushState({}, '', '/create'); }
   function setView(name) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById('view-' + name).classList.add('active');
@@ -597,7 +888,7 @@
             <div class="item-card-icon">🎁</div>
             <h3>${escHtml(item.name)}</h3>
             ${item.price ? `<span class="item-price">${escHtml(item.price)}</span>` : ''}
-            <a href="${escHtml(item.affiliateUrl || item.url)}" target="_blank" rel="noopener" class="btn btn-coral">🎁 Offrir ce cadeau</a>
+            <button class="btn btn-coral" onclick="openGiftModal('${escHtml(data.username)}','${escHtml(item.id)}','${escHtml(item.name)}')">🎁 Offrir ce cadeau</button>
           </div>`).join('')}
         </div>`;
     container.innerHTML = `
@@ -606,7 +897,6 @@
         <h1>${escHtml(data.displayName)}</h1>
         <p>${escHtml(data.bio || '')}</p>
         <div class="profile-actions">
-          <button class="btn btn-coral" onclick="toggleFollow(this,'${data.username}')">❤️ Suivre ${escHtml(data.displayName)}</button>
           <button class="btn btn-ghost" onclick="copyLink('${profileUrl}')">🔗 Copier le lien</button>
           <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('Offrez un cadeau à ' + data.displayName + ' ! 🎁 ' + profileUrl)}" target="_blank" rel="noopener" class="btn btn-ghost">𝕏 Partager</a>
           ${isOwner ? `<button class="btn btn-outline btn-sm" onclick="loadDashboard()">✏️ Modifier ma liste</button>` : ''}
@@ -617,24 +907,62 @@
         <p style="color:var(--muted);font-size:.9rem;margin-bottom:.8rem;">Tu veux ta propre liste ?</p>
         <button class="btn btn-primary" onclick="showCreate()">✨ Créer ma liste gratuite</button>
       </div>`;
-    // Update follow button state
-    const followBtn = container.querySelector('[onclick*="toggleFollow"]');
-    if (followBtn && localStorage.getItem('follow_' + data.username)) {
-      followBtn.textContent = '💜 Abonné·e !';
-    }
-  }
-
-  function toggleFollow(btn, username) {
-    const key = 'follow_' + username;
-    if (localStorage.getItem(key)) {
-      localStorage.removeItem(key); btn.textContent = '❤️ Suivre'; showToast('Tu ne suis plus ce créateur', 'error');
-    } else {
-      localStorage.setItem(key, '1'); btn.textContent = '💜 Abonné·e !'; showToast('Tu suis maintenant ce créateur ! 💜');
-    }
   }
 
   function copyLink(url) {
     navigator.clipboard.writeText(url).then(() => showToast('Lien copié ! 🔗', 'success'));
+  }
+
+  // ─── Gift modal ───
+  function openGiftModal(creatorUsername, itemId, itemName) {
+    currentGiftItem = { creatorUsername, itemId, itemName };
+    document.getElementById('gift-item-name').textContent = itemName;
+    document.getElementById('gift-fan-name').value = '';
+    document.getElementById('gift-fan-email').value = '';
+    document.getElementById('gift-message').value = '';
+    document.getElementById('gift-modal').classList.add('open');
+  }
+  function closeGiftModal() {
+    document.getElementById('gift-modal').classList.remove('open');
+    currentGiftItem = null;
+  }
+  document.getElementById('gift-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeGiftModal();
+  });
+
+  async function submitGiftRequest(e) {
+    e.preventDefault();
+    if (!currentGiftItem) return;
+    const btn = e.target.querySelector('[type=submit]');
+    btn.disabled = true; btn.textContent = '⏳ Envoi…';
+
+    const fanName = document.getElementById('gift-fan-name').value.trim();
+    const fanEmail = document.getElementById('gift-fan-email').value.trim();
+    const message = document.getElementById('gift-message').value.trim();
+
+    try {
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          creatorUsername: currentGiftItem.creatorUsername,
+          itemId: currentGiftItem.itemId,
+          itemName: currentGiftItem.itemName,
+          fanName, fanEmail, message
+        })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        closeGiftModal();
+        showToast('Demande envoyée ! On te contacte sous 24h. 🎁', 'success');
+      } else {
+        showToast(data.error || 'Erreur', 'error');
+        btn.disabled = false; btn.textContent = 'Envoyer ma demande de cadeau 🎁';
+      }
+    } catch {
+      showToast('Erreur réseau', 'error');
+      btn.disabled = false; btn.textContent = 'Envoyer ma demande de cadeau 🎁';
+    }
   }
 
   // ─── Dashboard ───
@@ -646,9 +974,8 @@
     try {
       const res = await fetch('/api/me', { headers: { 'Authorization': 'Bearer ' + authToken } });
       if (res.status === 401) { handleLogout(); return; }
-      const { username, wishlist } = await res.json();
+      const { username, wishlist, hasAddress } = await res.json();
 
-      // Link banner
       document.getElementById('link-banner-container').innerHTML = `
         <div class="link-banner">
           <div>
@@ -658,24 +985,78 @@
           <button class="btn btn-ghost btn-sm" onclick="copyLink('${window.location.origin}/${escHtml(username)}')">Copier</button>
         </div>`;
 
-      // Stats
       const items = wishlist ? wishlist.items : [];
-      const totalValue = items.reduce((sum, i) => {
-        const n = parseFloat((i.price || '0').replace(/[^0-9.]/g, ''));
-        return sum + (isNaN(n) ? 0 : n);
-      }, 0);
       document.getElementById('dashboard-stats').innerHTML = `
         <div class="stat-card"><div class="stat-number">${items.length}</div><div class="stat-label">Cadeaux dans la liste</div></div>
-        <div class="stat-card"><div class="stat-number">${totalValue > 0 ? totalValue.toFixed(0) + '€' : '—'}</div><div class="stat-label">Valeur totale estimée</div></div>`;
+        <div class="stat-card"><div class="stat-number">${hasAddress ? '✅' : '⚠️'}</div><div class="stat-label">Adresse configurée</div></div>`;
 
-      // Items list
+      renderAddressStatus(hasAddress);
       renderDashboardItems(items);
 
-      // View my page btn
+      // Load orders
+      const ordRes = await fetch('/api/orders/mine', { headers: { 'Authorization': 'Bearer ' + authToken } });
+      const orders = ordRes.ok ? await ordRes.json() : [];
+      renderOrders(orders);
+
       document.getElementById('btn-view-my-page').onclick = () => showProfile(username);
 
     } catch (e) {
       showToast('Erreur de chargement', 'error');
+    }
+  }
+
+  function renderAddressStatus(hasAddress) {
+    const el = document.getElementById('address-status-display');
+    if (hasAddress) {
+      el.innerHTML = `
+        <div class="address-status has-address">
+          <div class="addr-icon">🔒</div>
+          <div class="addr-text">
+            <div class="addr-label">Adresse configurée</div>
+            <div class="addr-sublabel">Chiffrée et stockée en sécurité. Jamais visible par tes fans.</div>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="toggleAddressForm()">Modifier</button>
+        </div>`;
+    } else {
+      el.innerHTML = `
+        <div class="address-status">
+          <div class="addr-icon">⚠️</div>
+          <div class="addr-text">
+            <div class="addr-label">Adresse non configurée</div>
+            <div class="addr-sublabel">Ajoute ton adresse pour recevoir des cadeaux.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="toggleAddressForm()">Ajouter</button>
+        </div>`;
+    }
+  }
+
+  function toggleAddressForm() {
+    document.getElementById('address-form').classList.toggle('open');
+    document.getElementById('addr-fullname').focus();
+  }
+
+  async function submitAddress() {
+    const fullName = document.getElementById('addr-fullname').value.trim();
+    const line1 = document.getElementById('addr-line1').value.trim();
+    const line2 = document.getElementById('addr-line2').value.trim();
+    const postalCode = document.getElementById('addr-postal').value.trim();
+    const city = document.getElementById('addr-city').value.trim();
+
+    if (!fullName || !line1 || !postalCode || !city) {
+      showToast('Nom, adresse, code postal et ville sont requis', 'error'); return;
+    }
+
+    const res = await fetch('/api/me/address', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
+      body: JSON.stringify({ fullName, line1, line2, postalCode, city })
+    });
+    if (res.ok) {
+      document.getElementById('address-form').classList.remove('open');
+      renderAddressStatus(true);
+      showToast('Adresse enregistrée en sécurité 🔒', 'success');
+    } else {
+      showToast('Erreur lors de l\'enregistrement', 'error');
     }
   }
 
@@ -692,6 +1073,24 @@
           ${item.price ? `<div class="dashboard-item-price">${escHtml(item.price)}</div>` : ''}
         </div>
         <button class="btn btn-danger btn-sm" onclick="deleteItem('${item.id}')">✕</button>
+      </div>`).join('');
+  }
+
+  function renderOrders(orders) {
+    const el = document.getElementById('orders-list');
+    if (orders.length === 0) {
+      el.innerHTML = `<p style="color:var(--muted);text-align:center;padding:1rem;font-size:.9rem;">Aucun cadeau reçu pour l'instant.</p>`;
+      return;
+    }
+    const statusMap = { pending: 'En attente', processing: 'En cours', shipped: 'Expédié', delivered: 'Livré', cancelled: 'Annulé' };
+    el.innerHTML = orders.map(o => `
+      <div class="order-item">
+        <div>
+          <div style="font-weight:700;font-size:.95rem;">🎁 ${escHtml(o.itemName)}</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-top:.2rem;">De : ${escHtml(o.fanName)} • ${new Date(o.createdAt).toLocaleDateString('fr-FR')}</div>
+          ${o.message ? `<div style="font-size:.8rem;color:var(--muted);margin-top:.1rem;font-style:italic;">"${escHtml(o.message)}"</div>` : ''}
+        </div>
+        <span class="order-status-badge status-${o.status}">${statusMap[o.status] || o.status}</span>
       </div>`).join('');
   }
 
@@ -753,7 +1152,7 @@
   function switchTab(tab) {
     document.querySelectorAll('.modal-tab').forEach((t, i) => t.classList.toggle('active', (i === 0) === (tab === 'login')));
     document.getElementById('tab-login').style.display = tab === 'login' ? 'block' : 'none';
-    document.getElementById('tab-forgot').style.display = tab === 'forgot' ? 'block' : 'none';
+    document.getElementById('tab-forgot').style.display = tab === 'forgot' ? 'block' : '  none';
   }
 
   async function handleLogin(e) {
@@ -793,6 +1192,15 @@
   }
 
   // ─── Create form ───
+  // Creator type picker
+  document.querySelectorAll('.creator-type-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.creator-type-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selectedCreatorType = opt.dataset.type;
+    });
+  });
+
   function addItemRow() {
     const id = ++itemCount;
     const row = document.createElement('div');
@@ -800,8 +1208,7 @@
     row.innerHTML = `
       <input type="text" placeholder="Nom du produit" id="item-name-${id}" />
       <input type="url" placeholder="https://amazon.fr/dp/..." id="item-url-${id}" />
-      <input type="text" placeholder="Prix (89€)" style="grid-column:1;grid-row:2;" id="item-price-${id}" />
-      <button type="button" class="remove-item" onclick="removeItem(${id})" title="Supprimer" style="grid-column:2;grid-row:2;">✕</button>`;
+      <button type="button" class="remove-item" onclick="removeItem(${id})" title="Supprimer">✕</button>`;
     document.getElementById('items-list').appendChild(row);
   }
   function removeItem(id) { document.getElementById('item-' + id)?.remove(); }
@@ -813,7 +1220,7 @@
     if (password !== password2) { showToast('Les mots de passe ne correspondent pas', 'error'); return; }
 
     const btn = e.target.querySelector('[type=submit]');
-    btn.disabled = true; btn.textContent = '⏳ Création en cours…';
+    btn.disabled = true; btn.textContent = '⏳ Création…';
 
     const username = document.getElementById('f-username').value.trim();
     const displayName = document.getElementById('f-displayname').value.trim();
@@ -823,15 +1230,14 @@
       const id = row.id.replace('item-', '');
       const name = document.getElementById('item-name-' + id)?.value.trim();
       const url = document.getElementById('item-url-' + id)?.value.trim();
-      const price = document.getElementById('item-price-' + id)?.value.trim();
-      if (name || url) items.push({ name, url, price });
+      if (name || url) items.push({ name, url, price: '' });
     });
 
     try {
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, displayName, bio, emoji: selectedEmoji, items, password })
+        body: JSON.stringify({ username, displayName, bio, emoji: selectedEmoji, items, password, creatorType: selectedCreatorType })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Erreur');
@@ -840,8 +1246,8 @@
       localStorage.setItem('om_token', authToken);
       localStorage.setItem('om_username', authUsername);
       updateNavbar();
-      showToast('🎉 Liste créée avec succès !', 'success');
-      setTimeout(() => showProfile(data.username), 800);
+      showToast('🎉 Liste créée !', 'success');
+      setTimeout(() => loadDashboard(), 600);
     } catch (err) {
       showToast('❌ ' + err.message, 'error');
       btn.disabled = false; btn.textContent = '🚀 Créer ma liste';
@@ -866,7 +1272,7 @@
   function showToast(msg, type = '') {
     const t = document.getElementById('toast');
     t.textContent = msg; t.className = 'toast show' + (type ? ' ' + type : '');
-    setTimeout(() => t.classList.remove('show'), 3000);
+    setTimeout(() => t.classList.remove('show'), 3500);
   }
   function escHtml(str) {
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
